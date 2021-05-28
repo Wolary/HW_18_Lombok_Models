@@ -3,6 +3,8 @@ import lombok.BookLombok;
 import model.BookDataGetSet;
 import org.junit.jupiter.api.Test;
 
+import static io.restassured.RestAssured.given;
+import static org.hamcrest.Matchers.hasItem;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class BookTest {
@@ -70,4 +72,18 @@ public class BookTest {
                 .log().body()
                 .extract().as(BookDataLombok.class);
     }
+
+    //Не осилил груви запрос по авторам
+//    @Test
+//    void listOfBooksGroovy() {
+//        given()
+//                .spec(Specs.request)
+//                .log().uri()
+//                .when()
+//                .get("/BookStore/v1/Books")
+//                .then()
+//                .log().body()
+//                .body("data.FindAll{it.author = ~/*?/}.author.flatten()",
+//                        hasItem("Axel Rauschmayer"));
+//    }
 }
